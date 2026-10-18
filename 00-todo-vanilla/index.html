@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Todo vanilla</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>Todo</h1>
+    <form id="add-form">
+        <input id="new-todo" placeholder="Nouvelle tâche" />
+        <button type="submit">Ajouter</button>
+    </form>
+    <div id="filters">
+        <button data-filter="all">Toutes</button>
+        <button data-filter="todo">À faire</button>
+        <button data-filter="done">Faites</button>
+    </div>
+    <ul id="list"></ul>
+    <p><span id="remaining"></span> tâche(s) restante(s)</p>
+    <script src="script.js"></script>
+</body>
+
+</html>
