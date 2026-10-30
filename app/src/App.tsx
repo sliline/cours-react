@@ -1,3 +1,5 @@
+import TemperatureConverter from "./exos/TemperatureConverter";
+
 export default function App() {
-  return <h1>Cours React</h1>;
+  return <TemperatureConverter />;
 }
