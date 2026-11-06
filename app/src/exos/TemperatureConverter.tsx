@@ -7,7 +7,7 @@ export default function TemperatureConverter() {
   return (
     <div>
       <input value={celsius} onChange={(e) => setCelsius(e.target.value)} />
-      <p>{fahrenheit} °F</p>
+      {celsius !== "" && <p>{fahrenheit} °F</p>}
     </div>
   );
 }
