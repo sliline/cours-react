@@ -15,7 +15,7 @@ exercices d'apprentissage en React + typescript, projet vite.
 tu écris uniquement dans src/exos-claude/. Tu ne lis jamais et tu ne modifies jamais src/exos/.
 -Le state contient le minimum: tout ce qui peut se calculer à partir d'un state est une simple variable, jamais un autre useState.
 -pas de useEffect pour calculer ou synchroniser des données.
--on ne modifie jamais un state directement : on crée toujours un nouveau tableauou un nouvel objet.
+-on ne modifie jamais un state directement : on crée toujours un nouveau tablea uou un nouvel objet.
 -les key des listes utilisent un id, jamais l'index.
--dans un onClick ou un onChange, on passe une fonction (()-->on n'appelle pas la fonction directement.
+-dans un onClick ou un onChange, on passe une fonction (() => ...)on n'appelle pas la fonction directement.
 -quand tu as finis, lance npm run lint.
