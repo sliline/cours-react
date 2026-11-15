@@ -1,5 +1,5 @@
-import TemperatureConverter from "./exos/TemperatureConverter";
+import Cart from "./exos/Cart";
 
 export default function App() {
-  return <TemperatureConverter />;
+  return <Cart />;
 }
