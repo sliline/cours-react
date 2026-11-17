@@ -7,6 +7,7 @@ import TodoList from "./TodoList";
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
+  const [editingId, setEditingId] = useState<number | null>(null);
   // Compteur jamais réutilisé, même après une suppression
   const nextId = useRef(1);
 
@@ -34,6 +35,20 @@ export default function TodoApp() {
 
   function remove(id: number) {
     setTodos(todos.filter((todo) => todo.id !== id));
+    if (id === editingId) {
+      setEditingId(null);
+    }
+  }
+
+  function rename(id: number, text: string) {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: text } : todo)),
+    );
+    setEditingId(null);
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
   }
 
   return (
@@ -41,7 +56,15 @@ export default function TodoApp() {
       <h1>Todo</h1>
       <AddTodoForm onAdd={add} />
       <FilterBar filter={filter} onFilterChange={setFilter} />
-      <TodoList todos={visibleTodos} onToggle={toggle} onRemove={remove} />
+      <TodoList
+        todos={visibleTodos}
+        editingId={editingId}
+        onToggle={toggle}
+        onRemove={remove}
+        onStartEdit={setEditingId}
+        onRename={rename}
+        onCancelEdit={cancelEdit}
+      />
       <p>{remaining} tâche(s) restante(s)</p>
     </div>
   );
