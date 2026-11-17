@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Filter, Todo } from "../types";
 import AddTodoForm from "./AddTodoForm";
 import FilterBar from "./FilterBar";
@@ -7,6 +7,8 @@ import TodoList from "./TodoList";
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
+  // Compteur jamais réutilisé, même après une suppression
+  const nextId = useRef(1);
 
   // Calculés à chaque affichage, jamais stockés
   const visibleTodos = todos.filter((todo) => {
@@ -17,9 +19,9 @@ export default function TodoApp() {
   const remaining = todos.filter((todo) => !todo.done).length;
 
   function add(text: string) {
-    const nextId =
-      todos.length === 0 ? 1 : Math.max(...todos.map((todo) => todo.id)) + 1;
-    setTodos([...todos, { id: nextId, text: text, done: false }]);
+    const id = nextId.current;
+    nextId.current++;
+    setTodos([...todos, { id: id, text: text, done: false }]);
   }
 
   function toggle(id: number) {
