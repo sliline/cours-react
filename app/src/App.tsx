@@ -1,4 +1,5 @@
-import Cart from "./exos/Cart";
+import TodoApp from "./exos/TodoApp";
+
 export default function App() {
-  return <Cart />;
+  return <TodoApp />;
 }
